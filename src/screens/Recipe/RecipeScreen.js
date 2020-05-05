@@ -9,12 +9,12 @@ import {
   Dimensions,
   TouchableHighlight
 } from 'react-native';
+import { WebView } from 'react-native-webview';
 import styles from './styles';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 // import { getIngredientName, getCategoryName, getCategoryById } from '../../data/MockDataAPI';
 import BackButton from '../../components/BackButton/BackButton';
 import ViewIngredientsButton from '../../components/ViewIngredientsButton/ViewIngredientsButton';
-import MapView from 'react-native-maps';
 
 const { width: viewportWidth } = Dimensions.get('window');
 
@@ -39,22 +39,19 @@ export default class RecipeScreen extends React.Component {
       loading: true,
       dataSource:[]
     };
-    const { navigation } = this.props;
-    const item = navigation.getParam('item');
   }
 
-  componentDidMount(){
-    
-    fetch("https://ajutor.info/api/help-${item.url_key}")
-        .then(response => response.json())
-        .then((responseJson)=> {
-            this.setState({
-                loading: false,
-                dataSource: responseJson
-            })
-        })
-        .catch(error=>console.log(error)) //to catch the errors if any
-  };
+  // componentDidMount(){
+  //   fetch("https://ajutor.info/api/help-${item.url_key}")
+  //       .then(response => response.json())
+  //       .then((responseJson)=> {
+  //           this.setState({
+  //               loading: false,
+  //               dataSource: responseJson
+  //           })
+  //       })
+  //       .catch(error=>console.log(error)) //to catch the errors if any
+  // };
 
   renderImage = ({ item }) => (
     <TouchableHighlight>
@@ -81,7 +78,7 @@ export default class RecipeScreen extends React.Component {
       <ScrollView style={styles.container}>
         <View style={styles.carouselContainer}>
           <View style={styles.carousel}>
-            {/* <Image style={styles.image} source={{ uri: item.image }} /> */}
+            <Image style={styles.image} source={{ uri: item.img }} />
             {/* <Carousel
               ref={c => {
                 this.slider1Ref = c;
@@ -125,7 +122,7 @@ export default class RecipeScreen extends React.Component {
 
           <View style={styles.infoContainer}>
             {/* <Image style={styles.infoPhoto} source={require('../../../assets/icons/time.png')} /> */}
-            <Text style={styles.infoRecipe}>{item.img}</Text>
+            <Text style={styles.infoRecipe}>{item.jud.judet}</Text>
             {/* <Image style={styles.infoPhoto} source={require('../../../assets/icons/difficulty.png')} /> */}
             {/* <Text style={styles.infoRecipe}>{item.srv.serviciu}</Text> */}
           </View>
@@ -139,9 +136,12 @@ export default class RecipeScreen extends React.Component {
               }}
             />
           </View>
-          {/* <View style={styles.infoContainer}>
-            <Text style={styles.infoDescriptionRecipe}>{item.about}</Text>
-          </View> */}
+          <View style={styles.infoContainer}>
+            <Text style={styles.infoDescriptionRecipe}>{item.details.descriere}</Text>
+            <WebView 
+              source={{html: item.details.descriere}}
+            />
+          </View>
         </View>
       </ScrollView>
     );

@@ -27,7 +27,7 @@ export default class HomeScreen extends React.Component {
 
   }
   componentDidMount(){
-      fetch("https://ajutor.info/api/search.php?judet=15&serviciu=5")
+      fetch("https://ajutor.info/api/search.php")
           .then(response => response.json())
           .then((responseJson)=> {
               this.setState({
