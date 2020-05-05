@@ -11,21 +11,21 @@ export default class DrawerContainer extends React.Component {
       <View style={styles.content}>
         <View style={styles.container}>
           <MenuButton
-            title="Trasee"
+            title="Ajutor.info"
             source={require('../../../assets/icons/home.png')}
             onPress={() => {
               navigation.navigate('Home');
               navigation.closeDrawer();
             }}
           />
-          <MenuButton
+          {/* <MenuButton
             title="Regiuni"
             source={require('../../../assets/icons/category.png')}
             onPress={() => {
               navigation.navigate('Categories');
               navigation.closeDrawer();
             }}
-          />
+          /> */}
           {/* <MenuButton
             title="SEARCH"
             source={require('../../../assets/icons/search.png')}
@@ -42,7 +42,7 @@ export default class DrawerContainer extends React.Component {
               navigation.closeDrawer();
             }}
           />
-          <Text style={styles.link}>www.turecubicla.ro</Text>
+          <Text style={styles.link}>www.ajutor.info</Text>
         </View>
       </View>
     );

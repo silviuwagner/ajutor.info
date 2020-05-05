@@ -8,7 +8,7 @@ import { getCategoryName } from '../../data/MockDataAPI';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: 'Ture cu Bicla',
+    title: 'Ajutor.info',
     headerLeft: (
       <MenuImage
         onPress={() => {
@@ -27,7 +27,7 @@ export default class HomeScreen extends React.Component {
 
   }
   componentDidMount(){
-      fetch("https://app.turecubicla.ro/trails/api/trails")
+      fetch("https://ajutor.info/api/search.php?judet=15&serviciu=5")
           .then(response => response.json())
           .then((responseJson)=> {
               this.setState({
@@ -45,9 +45,9 @@ export default class HomeScreen extends React.Component {
   renderRecipes=(data)=>
     <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)' onPress={() => this.onPressRecipe(data.item)}>
       <View style={styles.container}>
-        <Image style={styles.photo} source={{ uri: data.item.image }} />
-        <Text style={styles.title}>{data.item.title}</Text>
-        {/* <Text style={styles.category}>{getCategoryName(item.categoryId)}</Text> */}
+        {/* <Image style={styles.photo} source={{ uri: data.item.image }} /> */}
+        <Text style={styles.title}>{data.item.nume}</Text>
+        <Text style={styles.category}>{data.item.jud.judet}</Text>
       </View>
     </TouchableHighlight>
 
@@ -57,7 +57,7 @@ export default class HomeScreen extends React.Component {
         <FlatList
           vertical
           showsVerticalScrollIndicator={false}
-          numColumns={2}
+          numColumns={1}
           data={this.state.dataSource}
           renderItem={this.renderRecipes}
           keyExtractor={item => `${item.recipeId}`}

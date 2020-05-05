@@ -39,10 +39,13 @@ export default class RecipeScreen extends React.Component {
       loading: true,
       dataSource:[]
     };
+    const { navigation } = this.props;
+    const item = navigation.getParam('item');
   }
 
   componentDidMount(){
-    fetch("https://app.turecubicla.ro/trails/api/trails")
+    
+    fetch("https://ajutor.info/api/help-${item.url_key}")
         .then(response => response.json())
         .then((responseJson)=> {
             this.setState({
@@ -78,7 +81,7 @@ export default class RecipeScreen extends React.Component {
       <ScrollView style={styles.container}>
         <View style={styles.carouselContainer}>
           <View style={styles.carousel}>
-            <Image style={styles.image} source={{ uri: item.image }} />
+            {/* <Image style={styles.image} source={{ uri: item.image }} /> */}
             {/* <Carousel
               ref={c => {
                 this.slider1Ref = c;
@@ -111,7 +114,7 @@ export default class RecipeScreen extends React.Component {
           </View>
         </View>
         <View style={styles.infoRecipeContainer}>
-          <Text style={styles.infoRecipeName}>{item.title}</Text>
+          <Text style={styles.infoRecipeName}>{item.nume}</Text>
           <View style={styles.infoContainer}>
             <TouchableHighlight
               
@@ -121,10 +124,10 @@ export default class RecipeScreen extends React.Component {
           </View>
 
           <View style={styles.infoContainer}>
-            <Image style={styles.infoPhoto} source={require('../../../assets/icons/time.png')} />
-            <Text style={styles.infoRecipe}>{item.distance} km</Text>
-            <Image style={styles.infoPhoto} source={require('../../../assets/icons/difficulty.png')} />
-            <Text style={styles.infoRecipe}>{item.difficulty}</Text>
+            {/* <Image style={styles.infoPhoto} source={require('../../../assets/icons/time.png')} /> */}
+            <Text style={styles.infoRecipe}>{item.img}</Text>
+            {/* <Image style={styles.infoPhoto} source={require('../../../assets/icons/difficulty.png')} /> */}
+            {/* <Text style={styles.infoRecipe}>{item.srv.serviciu}</Text> */}
           </View>
 
           <View style={styles.infoContainer}>
@@ -136,17 +139,9 @@ export default class RecipeScreen extends React.Component {
               }}
             />
           </View>
-          <View style={styles.infoContainer}>
+          {/* <View style={styles.infoContainer}>
             <Text style={styles.infoDescriptionRecipe}>{item.about}</Text>
-          </View>
-            <MapView style={styles.mapStyle}
-              initialRegion={{
-                latitude: 45.94320,
-                longitude: 24.96680,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421
-              }}
-            />
+          </View> */}
         </View>
       </ScrollView>
     );
