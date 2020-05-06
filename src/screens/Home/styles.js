@@ -7,16 +7,34 @@ const styles = StyleSheet.create({
   title: RecipeCard.title,
   category: RecipeCard.category,
   ajBack: {
-    backgroundColor: '#82BDD7'
+    backgroundColor: '#AFCBD7'
   },
   pickerHome: {
     flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
   },
   listHome: {
     // flex: 1,
   },
   pickerMain: {
-    width: 150,
+    width: 170,
+  },
+  judet: {
+    backgroundColor: '#92DDCE',
+    borderRadius: 15,
+    padding: 5,
+    marginRight: 5,
+  },
+  serviciu: {
+    backgroundColor: '#FDEAA8',
+    borderRadius: 15,
+    padding: 5,
+  },
+  judSvr: {
+    flexDirection: 'row',
+    padding: 10,
   }
 });
 

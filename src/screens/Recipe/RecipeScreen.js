@@ -121,14 +121,12 @@ export default class RecipeScreen extends React.Component {
 
           <View style={styles.infoContainer}>
             {/* <Image style={styles.infoPhoto} source={require('../../../assets/icons/time.png')} /> */}
-            <Text style={styles.infoRecipe}>
-              {item.jud[0].judet}
-              {/* { item.map((jud) => (
-                <View>
-                  <Text>{jud.judet}</Text>
-                </View>
-              ))} */}
-            </Text>
+            <View style={styles.judet}>
+              <Text style={styles.category}>{item.jud[0].judet}</Text>
+            </View>
+            <View style={styles.serviciu}>
+              <Text style={styles.category}>{item.srv[0].serviciu}</Text>
+            </View>
             {/* <Image style={styles.infoPhoto} source={require('../../../assets/icons/difficulty.png')} /> */}
             {/* <Text style={styles.infoRecipe}>{item.srv.serviciu}</Text> */}
           </View>

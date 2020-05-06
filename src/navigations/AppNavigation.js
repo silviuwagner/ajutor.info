@@ -43,7 +43,7 @@ const MainNavigator = createStackNavigator(
   {
     Home: HomeScreen,
     Categories: CategoriesScreen,
-    Traseu: RecipeScreen,
+    Ajutor: RecipeScreen,
     RecipesList: RecipesListScreen,
     Ingredient: IngredientScreen,
     Search: SearchScreen,

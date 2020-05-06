@@ -63,7 +63,7 @@ export default class HomeScreen extends React.Component {
   };
 
   onPressRecipe = item => {
-    this.props.navigation.navigate('Traseu', { item });
+    this.props.navigation.navigate('Ajutor', { item });
   };
 
   renderRecipes=(data)=>
@@ -71,8 +71,14 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         {/* <Image style={styles.photo} source={{ uri: data.item.img }} /> */}
         <Text style={styles.title}>{data.item.nume}</Text>
-        <Text style={styles.category}>{data.item.jud[0].judet}</Text>
-        <Text style={styles.category}>{data.item.srv[0].serviciu}</Text>
+        <View style={styles.judSvr}>
+          <View style={styles.judet}>
+            <Text>{data.item.jud[0].judet}</Text>
+          </View>
+          <View style={styles.serviciu}>
+            <Text>{data.item.srv[0].serviciu}</Text>
+          </View>
+        </View>
       </View>
     </TouchableHighlight>
 
@@ -82,9 +88,11 @@ export default class HomeScreen extends React.Component {
         <View style={styles.pickerHome}>
           <Picker style={styles.pickerMain}
             selectedValue={this.state.judetValueHolder}
-            onValueChange={(itemValue, itemIndex) => this.setState({judetValueHolder: itemValue})} >
+            onValueChange={
+              (itemValue, itemIndex) => this.setState({judetValueHolder: itemValue})
+            } >
             { this.state.judeteSource.map((item, key)=>(
-            <Picker.Item label={item.judet} value={item.judet} key={key} />)
+              <Picker.Item label={item.judet} value={item.judet} key={key} />)
             )}
           </Picker>
           <Picker style={styles.pickerMain}

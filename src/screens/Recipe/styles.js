@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    marginBottom:10,
   },
   buttonContainer: {
     flex: 1,
@@ -68,8 +69,8 @@ const styles = StyleSheet.create({
   category: {
     fontSize: 14,
     fontWeight: 'bold',
-    margin: 10,
-    color: '#2cd18a'
+    margin: 5,
+    color: '#000'
   },
   infoDescriptionRecipe: {
     textAlign: 'left',
@@ -93,11 +94,24 @@ const styles = StyleSheet.create({
   },
   asocContainer: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginTop: 10,
   },
   asocIcon: {
     marginLeft: 5,
     marginRight: 5
+  },
+  judet: {
+    backgroundColor: '#92DDCE',
+    borderRadius: 15,
+    padding: 5,
+    margin: 5,
+  },
+  serviciu: {
+    backgroundColor: '#FDEAA8',
+    borderRadius: 15,
+    padding: 5,
+    margin: 5
   }
 });
 
