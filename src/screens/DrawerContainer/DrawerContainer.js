@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image, Linking } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
 import MenuButton from '../../components/MenuButton/MenuButton';
@@ -10,6 +10,7 @@ export default class DrawerContainer extends React.Component {
     return (
       <View style={styles.content}>
         <View style={styles.container}>
+          {/* <Image style={styles.logoimage} source={require('../../../assets/icons/icon.png')} /> */}
           <MenuButton
             title="Ajutor.info"
             source={require('../../../assets/icons/home.png')}
@@ -37,9 +38,9 @@ export default class DrawerContainer extends React.Component {
           <MenuButton
             title="Contact"
             source={require('../../../assets/icons/contact.png')}
-            onPress={() => {
-              navigation.navigate('Categories');
-              navigation.closeDrawer();
+            onPress={() => { Linking.openURL(`tel:0728506507`)
+              // navigation.navigate('Categories');
+              // navigation.closeDrawer();
             }}
           />
           <Text style={styles.link}>www.ajutor.info</Text>

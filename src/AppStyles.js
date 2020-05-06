@@ -21,9 +21,14 @@ export const RecipeCard = StyleSheet.create({
     marginTop: 20,
     // width: SCREEN_WIDTH - 50,
     height: 60,
-    borderColor: '#cccccc',
-    borderWidth: 0.5,
-    borderRadius: 15
+    borderColor: '#82BDD7',
+    borderWidth: 1.2,
+    borderRadius: 25,
+    shadowColor: '#000',
+    shadowOffset: { width: -3, height: -5 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    backgroundColor: '#ffffff',
   },
   photo: {
     width: (SCREEN_WIDTH - (recipeNumColums + 1) * RECIPE_ITEM_MARGIN) / recipeNumColums,
@@ -34,6 +39,7 @@ export const RecipeCard = StyleSheet.create({
   },
   title: {
     flex: 1,
+    // fontFamily: "Avenir",
     fontSize: 17,
     fontWeight: 'bold',
     textAlign: 'center',

@@ -91,6 +91,14 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height
     // height: 300
   },
+  asocContainer: {
+    flex: 1,
+    flexDirection: 'row'
+  },
+  asocIcon: {
+    marginLeft: 5,
+    marginRight: 5
+  }
 });
 
 export default styles;

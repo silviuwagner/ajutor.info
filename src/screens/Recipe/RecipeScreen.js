@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
-  TouchableHighlight
+  TouchableHighlight,
+  Linking
 } from 'react-native';
 import { WebView } from 'react-native-webview';
 import styles from './styles';
@@ -62,7 +63,7 @@ export default class RecipeScreen extends React.Component {
   );
 
   // onPressIngredient = item => {
-  //   var name = getIngredientName(item);
+  //   var name = getIngredientName(item)ș
   //   let ingredient = item;
   //   this.props.navigation.navigate('Ingredient', { region, title });
   // };
@@ -127,7 +128,16 @@ export default class RecipeScreen extends React.Component {
             {/* <Text style={styles.infoRecipe}>{item.srv.serviciu}</Text> */}
           </View>
 
-          <View style={styles.infoContainer}>
+          <View style={styles.asocContainer}>
+            <TouchableOpacity onPress={()=>{Linking.openURL(item.details.url_fb)}}>
+              <Image style={styles.asocIcon} source={require('../../../assets/icons/facebook-icon.png')} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=>{Linking.openURL(item.details.url_site)}}>
+              <Image style={styles.asocIcon} source={require('../../../assets/icons/website-icon.png')} />
+            </TouchableOpacity>
+          </View>
+
+          {/* <View style={styles.infoContainer}>
             <ViewIngredientsButton
               onPress={() => {
                 // let ingredients = item.ingredients;
@@ -135,12 +145,12 @@ export default class RecipeScreen extends React.Component {
                 // navigation.navigate('IngredientsDetails', { ingredients, title });
               }}
             />
-          </View>
+          </View> */}
           <View style={styles.infoContainer}>
             <Text style={styles.infoDescriptionRecipe}>{item.details.descriere}</Text>
-            <WebView 
+            {/* <WebView 
               source={{html: item.details.descriere}}
-            />
+            /> */}
           </View>
         </View>
       </ScrollView>

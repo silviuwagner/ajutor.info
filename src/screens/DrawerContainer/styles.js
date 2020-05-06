@@ -14,6 +14,9 @@ const styles = StyleSheet.create({
   },
   link: {
     paddingTop: 100
+  },
+  logoimage: {
+    width: 5
   }
 });
 
