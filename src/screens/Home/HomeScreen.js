@@ -29,11 +29,13 @@ export default class HomeScreen extends React.Component {
         language: 'java',
         judetValueHolder: [],
         serviciuValueHolder: [],
+        judetId: '0',
+        serviciuId: '0',
     };
 
   }
   componentDidMount(){
-      fetch("https://ajutor.info/api/search.php?judet=0&serviciu=0")
+      fetch("https://ajutor.info/api/search.php?judet="+this.state.judetId+"&serviciu="+this.state.serviciuId)
           .then(response => response.json())
           .then((responseJson)=> {
               this.setState({
@@ -66,6 +68,18 @@ export default class HomeScreen extends React.Component {
     this.props.navigation.navigate('Ajutor', { item });
   };
 
+  onChangeValue() {
+    fetch("https://ajutor.info/api/search.php?judet="+this.state.judetId+"&serviciu="+this.state.serviciuId)
+          .then(response => response.json())
+          .then((responseJson)=> {
+              this.setState({
+                  loading: false,
+                  dataSource: responseJson
+              })
+          })
+          .catch(error=>console.log(error)) //to catch the errors if any
+  }
+
   renderRecipes=(data)=>
     <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)' onPress={() => this.onPressRecipe(data.item)}>
       <View style={styles.container}>
@@ -89,7 +103,7 @@ export default class HomeScreen extends React.Component {
           <Picker style={styles.pickerMain}
             selectedValue={this.state.judetValueHolder}
             onValueChange={
-              (itemValue, itemIndex) => this.setState({judetValueHolder: itemValue})
+              (itemValue, itemIndex) => this.setState({judetValueHolder: itemValue, judetId: itemIndex})
             } >
             { this.state.judeteSource.map((item, key)=>(
               <Picker.Item label={item.judet} value={item.judet} key={key} />)
@@ -97,12 +111,13 @@ export default class HomeScreen extends React.Component {
           </Picker>
           <Picker style={styles.pickerMain}
             selectedValue={this.state.serviciuValueHolder}
-            onValueChange={(itemValue, itemIndex) => this.setState({serviciuValueHolder: itemValue})} >
+            onValueChange={(itemValue, itemIndex) => this.setState({serviciuValueHolder: itemValue, serviciuId: itemIndex})} >
             { this.state.serviciiSource.map((item, key)=>(
             <Picker.Item label={item.serviciu} value={item.serviciu} key={key} />)
             )}
           </Picker>
         </View>
+        {/* <Text>{this.state.judetId}{this.state.serviciuId}</Text> */}
         <FlatList
           vertical
           showsVerticalScrollIndicator={true}

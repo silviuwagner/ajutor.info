@@ -62,6 +62,13 @@ export default class RecipeScreen extends React.Component {
     </TouchableHighlight>
   );
 
+  getSrv(srv) {
+    // <View style={styles.judet}>
+    //   <Text style={styles.category}>{item.jud[0].judet}</Text>
+    // </View>
+    console.log(srv.serviciu);
+  }
+
   // onPressIngredient = item => {
   //   var name = getIngredientName(item)ș
   //   let ingredient = item;
@@ -74,6 +81,10 @@ export default class RecipeScreen extends React.Component {
     const item = navigation.getParam('item');
     // const category = getCategoryById(item.categoryId);
     // const title = getCategoryName(category.id);
+
+    // console.log({item});
+
+    item.srv.forEach(this.getSrv);
 
     return (
       <ScrollView style={styles.container}>
