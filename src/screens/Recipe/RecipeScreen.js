@@ -37,8 +37,8 @@ export default class RecipeScreen extends React.Component {
     super(props);
     this.state = {
       activeSlide: 0,
-      loading: true,
-      dataSource:[]
+      // loading: true,
+      // dataSource:[]
     };
   }
 
@@ -114,16 +114,21 @@ export default class RecipeScreen extends React.Component {
         <View style={styles.infoRecipeContainer}>
           <Text style={styles.infoRecipeName}>{item.nume}</Text>
           <View style={styles.infoContainer}>
-            <TouchableHighlight
-              
-            >
+            <TouchableHighlight>
               <Text style={styles.category}>{item.region}</Text>
             </TouchableHighlight>
           </View>
 
           <View style={styles.infoContainer}>
             {/* <Image style={styles.infoPhoto} source={require('../../../assets/icons/time.png')} /> */}
-            <Text style={styles.infoRecipe}>{item.jud.judet}</Text>
+            <Text style={styles.infoRecipe}>
+              {item.jud[0].judet}
+              {/* { item.map((jud) => (
+                <View>
+                  <Text>{jud.judet}</Text>
+                </View>
+              ))} */}
+            </Text>
             {/* <Image style={styles.infoPhoto} source={require('../../../assets/icons/difficulty.png')} /> */}
             {/* <Text style={styles.infoRecipe}>{item.srv.serviciu}</Text> */}
           </View>

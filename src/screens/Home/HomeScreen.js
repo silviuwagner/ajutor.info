@@ -27,6 +27,8 @@ export default class HomeScreen extends React.Component {
         judeteSource:[],
         serviciiSource:[],
         language: 'java',
+        judetValueHolder: [],
+        serviciuValueHolder: [],
     };
 
   }
@@ -69,7 +71,8 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         {/* <Image style={styles.photo} source={{ uri: data.item.img }} /> */}
         <Text style={styles.title}>{data.item.nume}</Text>
-        <Text style={styles.category}>{data.item.jud.judet}</Text>
+        <Text style={styles.category}>{data.item.jud[0].judet}</Text>
+        <Text style={styles.category}>{data.item.srv[0].serviciu}</Text>
       </View>
     </TouchableHighlight>
 
@@ -77,16 +80,16 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.ajBack}>
         <View style={styles.pickerHome}>
-          <Picker
-            selectedValue={this.state.judeteSource}
-            onValueChange={(itemValue, itemIndex) => this.setState({PickerValueHolder: itemValue})} >
+          <Picker style={styles.pickerMain}
+            selectedValue={this.state.judetValueHolder}
+            onValueChange={(itemValue, itemIndex) => this.setState({judetValueHolder: itemValue})} >
             { this.state.judeteSource.map((item, key)=>(
             <Picker.Item label={item.judet} value={item.judet} key={key} />)
             )}
           </Picker>
-          <Picker
-            selectedValue={this.state.serviciiSource}
-            onValueChange={(itemValue, itemIndex) => this.setState({PickerValueHolder: itemValue})} >
+          <Picker style={styles.pickerMain}
+            selectedValue={this.state.serviciuValueHolder}
+            onValueChange={(itemValue, itemIndex) => this.setState({serviciuValueHolder: itemValue})} >
             { this.state.serviciiSource.map((item, key)=>(
             <Picker.Item label={item.serviciu} value={item.serviciu} key={key} />)
             )}

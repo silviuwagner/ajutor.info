@@ -10,11 +10,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#82BDD7'
   },
   pickerHome: {
-    // flex: 1,
-    // flexDirection: 'row'
+    flexDirection: 'row',
   },
   listHome: {
     // flex: 1,
+  },
+  pickerMain: {
+    width: 150,
   }
 });
 
