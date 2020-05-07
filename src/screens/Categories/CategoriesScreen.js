@@ -7,8 +7,6 @@ import {
   TouchableHighlight
 } from 'react-native';
 import styles from './styles';
-import { categories } from '../../data/dataArrays';
-import { getNumberOfRecipes } from '../../data/MockDataAPI';
 
 export default class CategoriesScreen extends React.Component {
   static navigationOptions = {

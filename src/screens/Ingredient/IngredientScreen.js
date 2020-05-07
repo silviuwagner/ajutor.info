@@ -8,11 +8,6 @@ import {
   TouchableHighlight
 } from 'react-native';
 import styles from './styles';
-import {
-  getIngredientUrl,
-  getRecipesByIngredient,
-  getCategoryName
-} from '../../data/MockDataAPI';
 
 export default class IngredientScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {

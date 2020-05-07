@@ -7,7 +7,6 @@ import {
   Image
 } from 'react-native';
 import styles from './styles';
-import { getRecipes, getCategoryName } from '../../data/MockDataAPI';
 
 export default class RecipesListScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
