@@ -63,12 +63,9 @@ export default class HomeScreen extends React.Component {
           .catch(error=>console.log(error)) //to catch the errors if any
   };
 
-  onPressRecipe = item => {
-    this.props.navigation.navigate('Ajutor', { item });
-  };
-
-  onChangeValue() {
-    fetch("https://ajutor.info/api/search.php?judet="+this.state.judetId+"&serviciu="+this.state.serviciuId)
+  componentDidUpdate(prevState) {
+    if (prevState.judetId !== this.state.judetId || prevState.serviciuId !== this.state.serviciuId) {
+      fetch("https://ajutor.info/api/search.php?judet="+(this.state.judetId)+"&serviciu="+(this.state.serviciuId))
           .then(response => response.json())
           .then((responseJson)=> {
               this.setState({
@@ -77,7 +74,13 @@ export default class HomeScreen extends React.Component {
               })
           })
           .catch(error=>console.log(error)) //to catch the errors if any
+      // console.log(this.state.serviciuId);
+    }
   }
+
+  onPressRecipe = item => {
+    this.props.navigation.navigate('Ajutor', { item });
+  };
 
   renderRecipes=(data)=>
     <TouchableHighlight underlayColor='rgba(73,182,77,1,0.9)' onPress={() => this.onPressRecipe(data.item)}>

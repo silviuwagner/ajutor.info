@@ -10,12 +10,12 @@ import {
   Linking
 } from 'react-native';
 import { WebView } from 'react-native-webview';
-import styles from './styles';
+import styles from '../../styles';
 import BackButton from '../../components/BackButton/BackButton';
 
 const { width: viewportWidth } = Dimensions.get('window');
 
-export default class RecipeScreen extends React.Component {
+export default class AsocScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
       headerTransparent: 'true',
@@ -33,10 +33,7 @@ export default class RecipeScreen extends React.Component {
     super(props);
     this.state = {
       activeSlide: 0,
-      // loading: true,
-      // dataSource:[]
     };
-    this.getSrv = this.getSrv.bind(this);
   }
 
   renderImage = ({ item }) => (
@@ -47,21 +44,10 @@ export default class RecipeScreen extends React.Component {
     </TouchableHighlight>
   );
 
-  getSrv(srv) {
-    <View style={styles.serviciu}>
-      <Text style={styles.category}>{srv.serviciu}</Text>
-    </View>
-    // console.log(srv.serviciu);
-  }
-
   render() {
     const { activeSlide } = this.state;
     const { navigation } = this.props;
     const item = navigation.getParam('item');
-
-    const judetServiciu = item.srv.forEach(this.getSrv);
-
-    console.log(this.getSrv);
 
     return (
       <ScrollView style={styles.container}>
@@ -73,16 +59,12 @@ export default class RecipeScreen extends React.Component {
         <View style={styles.infoRecipeContainer}>
           <Text style={styles.infoRecipeName}>{item.nume}</Text>
           <View style={styles.infoContainer}>
-            <TouchableHighlight>
-              <Text style={styles.category}>{item.region}</Text>
-            </TouchableHighlight>
-          </View>
-
-          <View style={styles.infoContainer}>
             <View style={styles.judet}>
               <Text style={styles.category}>{item.jud[0].judet}</Text>
             </View>
-              {judetServiciu}
+            <View style={styles.serviciu}>
+              <Text style={styles.category}>{item.srv[0].serviciu}</Text>
+            </View>
           </View>
 
           <View style={styles.asocContainer}>
